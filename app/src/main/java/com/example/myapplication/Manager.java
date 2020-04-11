@@ -3,24 +3,31 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 
 public class Manager {
-    private String website;
-    private String password;
+    private String event;
+    private String date;
+    private String time;
 
-    public Manager(String web, String pass){
-        website = web;
-        password = pass;
+    public Manager(String event, String date, String time){
+        event = event;
+        date = date;
+        time = time;
     }
 
-    public String getWebsite(){
-        return website;
+    public String getEvent(){
+        return event;
     }
 
-    public String getPassword(){
-        return password;
+    public String getDate(){
+        return date;
     }
+
+    public String getTime(){
+        return time;
+    }
+
 
     @NonNull
     public String toString(){
-        return website + " " + password;
+        return event + " on " + date + " at " + time;
     }
 }
