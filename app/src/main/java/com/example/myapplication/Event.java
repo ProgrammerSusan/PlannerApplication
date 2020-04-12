@@ -2,15 +2,14 @@ package com.example.myapplication;
 
 public class Event
 {
-    public double time;
-    public String eventName, date, description;
+    public String eventName, eventDate, eventTime;
     public static int color;
     public static double alertTime;
 
-    public Event(double Time, String event, String desc)
+    public Event(String event, String date, String time)
     {
-        time = Time;
         eventName = event;
-        description = desc;
+        eventDate = date;
+        eventTime = time;
     }
 }
