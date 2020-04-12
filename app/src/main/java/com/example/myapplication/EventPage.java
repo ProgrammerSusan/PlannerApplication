@@ -23,7 +23,7 @@ public class EventPage extends AppCompatActivity {
     public class TextChangeHandler implements TextWatcher
     {
         //build textlistener
-        public String name, description;
+        public String name, description, date;
         public double time;
         public View view;
 
@@ -45,6 +45,8 @@ public class EventPage extends AppCompatActivity {
                 time = Double.parseDouble(e.toString());
             else if (view==findViewById(R.id.eventDescription))
                 description = e.toString();
+            else if(view==findViewById(R.id.eventDate))
+                date = e.toString();
 
             Event temp = new Event(time, name, description);
             if(!events.contains(temp))
@@ -55,6 +57,7 @@ public class EventPage extends AppCompatActivity {
                 temp2.eventName = name;
                 temp2.time = time;
                 temp2.description = description;
+                temp2.date = date;
             }
         }
     }

@@ -40,7 +40,6 @@
         android:layout_below="@id/eventName"
         android:textSize="18dp"/>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,6 +57,22 @@
         android:layout_below="@id/eventTime"
         android:textSize="18dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="18dp"
+        android:text="Event Date"
+        android:id="@+id/dateLabel"
+        android:layout_below="@id/descriptionLabel"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventDate"
+        android:layout_toRightOf="@id/descriptionLabel"
+        android:layout_below="@id/eventDescription"
+        android:textSize="18dp"/>
 
     <Button
         android:layout_width="wrap_content"

@@ -3,8 +3,7 @@ package com.example.myapplication;
 public class Event
 {
     public double time;
-    public String eventName;
-    public String description;
+    public String eventName, date, description;
     public static int color;
     public static double alertTime;
 
