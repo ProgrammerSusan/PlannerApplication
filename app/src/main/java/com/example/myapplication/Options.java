@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -55,5 +56,14 @@ public class Options extends AppCompatActivity
             Event.color = Color.parseColor("#271571");
         else
             Event.color = Color.parseColor("#3A0D56");
+    }
+
+    public void back(View view)
+    {
+        if (view.getId() == findViewById(R.id.back).getId())
+        {
+            Intent page = new Intent(this, MainActivity.class);
+            startActivity(page);
+        }
     }
 }

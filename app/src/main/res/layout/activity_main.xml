@@ -11,16 +11,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Events"
+        android:layout_marginTop="20dp"
         android:id="@+id/title"
         android:textSize="20dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title">
+        android:layout_below="@id/title"
+        android:id="@+id/scroll">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/eventOne"/>
     </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scroll"
+        android:text="Add Event"
+        android:textSize="20dp"
+        android:onClick="editEvent"
+        android:id="@+id/add"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add"
+        android:text="Options"
+        android:textSize="20dp"
+        android:onClick="options"
+        android:id="@+id/opt"/>
+
 </RelativeLayout>
