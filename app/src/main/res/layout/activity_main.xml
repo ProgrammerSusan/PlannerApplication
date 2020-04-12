@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:id="@+id/scroll">
-        <Button
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/eventOne"/>
+            android:id="@+id/events"/>
     </ScrollView>
 
     <Button
