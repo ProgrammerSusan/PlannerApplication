@@ -13,7 +13,7 @@ public class DatabaseManager extends SQLiteOpenHelper
     private static final String DATABASE_NAME = "EVENTS_DB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "EVENTS_DB";
-    private LinkedList<Integer> ids;
+    private LinkedList<Integer> list;
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -22,9 +22,9 @@ public class DatabaseManager extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
         String command = "CREATE TABLE " + TABLE_NAME + "(" +
-                "EVENT event, " +
-                "DATE date," +
-                "TIME time)";
+                "EVENT text, " +
+                "DATE text, " +
+                "TIME text)";
         db.execSQL(command);
     }
 
@@ -85,13 +85,13 @@ public class DatabaseManager extends SQLiteOpenHelper
     public LinkedList<Manager> all(){
         SQLiteDatabase db = getWritableDatabase();
         LinkedList<Manager> list = new LinkedList<Manager>();
-        Cursor cursor = db.query(TABLE_NAME, new String[]{"TITLE", "DATE", "TIME"},
+        Cursor cursor = db.query(TABLE_NAME, new String[]{"EVENT", "DATE", "TIME"},
                 null, null, null, null, null, null);
         while(cursor.moveToNext()){
-            String title = cursor.getString(0);
+            String event = cursor.getString(0);
             String date = cursor.getString(1);
             String time = cursor.getString(2);
-            Manager m = new Manager(title, date, time);
+            Manager m = new Manager(event, date, time);
             list.addLast(m);
         }
         cursor.close();
