@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Options">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="Options Menu"
+        android:id="@+id/title"/>
+
+
+    <!--Alert time choice-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="18dp"
+        android:text="Alert me about events happening in"
+        android:id="@+id/alertwords"
+        android:layout_below="@id/title"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeGroup"
+        android:layout_below="@id/alertwords">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a half-hour"
+            android:textSize="18dp"
+            android:id="@+id/halfHourBefore"
+            android:onClick="timeOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="an hour"
+            android:textSize="18dp"
+            android:id="@+id/hourBefore"
+            android:onClick="timeOnClick"/>
+    </RadioGroup>
+
+
+    <!--color choice-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="18dp"
+        android:text="Alert me about events happening in"
+        android:id="@+id/colorwords"
+        android:layout_below="@id/timeGroup"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/colorGroup"
+        android:layout_below="@id/alertwords">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:textSize="18dp"
+            android:id="@+id/red"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orange"
+            android:textSize="18dp"
+            android:id="@+id/orange"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yellow"
+            android:textSize="18dp"
+            android:id="@+id/yellow"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green"
+            android:textSize="18dp"
+            android:id="@+id/green"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blue"
+            android:textSize="18dp"
+            android:id="@+id/blue"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indego"
+            android:textSize="18dp"
+            android:id="@+id/Indego"
+            android:onClick="colorOnClick"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Violet"
+            android:textSize="18dp"
+            android:id="@+id/violet"
+            android:onClick="colorOnClick"/>
+    </RadioGroup>
+
+</RelativeLayout>
