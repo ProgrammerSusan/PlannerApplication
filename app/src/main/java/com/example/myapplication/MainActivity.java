@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
             TextView date = new TextView(this);
             date.setText(events.get(i).getDate());
             TextView time = new TextView(this);
-            time.setText(events.get(i).getDate());
+            time.setText(events.get(i).getTime());
             event.setTextSize(10*dp);
             date.setTextSize(10*dp);
             tr1.addView(event);

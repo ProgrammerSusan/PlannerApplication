@@ -8,9 +8,9 @@ public class Manager {
     private String time;
 
     public Manager(String event, String date, String time){
-        event = event;
-        date = date;
-        time = time;
+        this.event = event;
+        this.date = date;
+        this.time = time;
     }
 
     public String getEvent(){

@@ -22,21 +22,21 @@ public class Interface extends RelativeLayout
         ids = new LinkedList<>();
         final int dp = (int) (getResources().getDisplayMetrics().density);
 
-        for(int i = 0; i<events.size(); i++)
-        {
-            Button temp = new Button(context);
-            Integer index = new Integer(i);
-            temp.setText(events.get(i).time+" "+events.get(i).eventName);
-            temp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18*dp);
-            temp.setId(Button.generateViewId());
-            index = temp.getId();
-            temp.setTextColor(Event.color);
-            temp.setPadding(15*dp, 15*dp, 15*dp, 15*dp);
-            params = new LayoutParams(params);
-            params.width = RelativeLayout.LayoutParams.MATCH_PARENT;
-            params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
-            temp.setLayoutParams(params);
-            addView(temp);
-        }
+//        for(int i = 0; i<events.size(); i++)
+//        {
+//            Button temp = new Button(context);
+//            Integer index = new Integer(i);
+//            temp.setText(events.get(i).time+" "+events.get(i).eventName);
+//            temp.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18*dp);
+//            temp.setId(Button.generateViewId());
+//            index = temp.getId();
+//            temp.setTextColor(Event.color);
+//            temp.setPadding(15*dp, 15*dp, 15*dp, 15*dp);
+//            params = new LayoutParams(params);
+//            params.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+//            params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+//            temp.setLayoutParams(params);
+//            addView(temp);
+//        }
     }
 }
