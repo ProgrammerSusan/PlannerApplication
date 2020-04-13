@@ -23,6 +23,7 @@ public class Options extends AppCompatActivity
 
     public void timeOnClick(View view)
     {
+        //to get the amount of time the user wants to be notified before an event
         halfHour = (RadioButton) view;
         hour = (RadioButton) view;
 
@@ -34,15 +35,16 @@ public class Options extends AppCompatActivity
 
     public void colorOnClick(View view)
     {
-        red = (RadioButton) view;
-        orange = (RadioButton) view;
-        yellow = (RadioButton) view;
-        green = (RadioButton) view;
-        blue = (RadioButton) view;
-        indego = (RadioButton) view;
-        violet = (RadioButton) view;
+        //to change the color of the event list text
+        red = findViewById(R.id.red);
+        orange = findViewById(R.id.orange);
+        yellow = findViewById(R.id.yellow);
+        green = findViewById(R.id.green);
+        blue = findViewById(R.id.blue);
+        indego = findViewById(R.id.indego);
+        violet = findViewById(R.id.violet);
 
-        if(red.isChecked())
+        if      (red.isChecked())
             Event.color = Color.parseColor("#AE4040");
         else if (orange.isChecked())
             Event.color = Color.parseColor("#BD7E00");
@@ -54,12 +56,13 @@ public class Options extends AppCompatActivity
             Event.color = Color.parseColor("#155B71");
         else if (indego.isChecked())
             Event.color = Color.parseColor("#271571");
-        else
+        else if (violet.isChecked())
             Event.color = Color.parseColor("#3A0D56");
     }
 
     public void back(View view)
     {
+        //to get back to the homepage
         if (view.getId() == findViewById(R.id.back).getId())
         {
             Intent page = new Intent(this, MainActivity.class);

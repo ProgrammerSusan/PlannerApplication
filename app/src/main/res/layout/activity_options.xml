@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:text="Indego"
             android:textSize="18dp"
-            android:id="@+id/Indego"
+            android:id="@+id/indego"
             android:onClick="colorOnClick"/>
 
         <RadioButton

@@ -40,22 +40,6 @@
         android:layout_below="@id/eventName"
         android:textSize="18dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textSize="18dp"
-        android:text="Event Description"
-        android:id="@+id/descriptionLabel"
-        android:layout_below="@id/timeLabel"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eventDescription"
-        android:layout_toRightOf="@id/timeLabel"
-        android:layout_below="@id/eventTime"
-        android:textSize="18dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,32 +48,43 @@
         android:textSize="18dp"
         android:text="Event Date"
         android:id="@+id/dateLabel"
-        android:layout_below="@id/descriptionLabel"
+        android:layout_below="@id/timeLabel"
         android:layout_marginTop="20dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eventDate"
-        android:layout_toRightOf="@id/descriptionLabel"
-        android:layout_below="@id/eventDescription"
+        android:layout_toRightOf="@id/timeLabel"
+        android:layout_below="@id/eventTime"
         android:textSize="18dp"/>
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionLabel"
+        android:layout_below="@id/timeLabel"
         android:layout_marginTop="115dp"
         android:onClick="save"
         android:text="SAVE"
         android:textSize="20dp" />
 
     <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeLabel"
+        android:layout_toRightOf="@id/save"
+        android:layout_marginTop="115dp"
+        android:onClick="delete"
+        android:text="DELETE"
+        android:textSize="20dp" />
+
+    <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionLabel"
-        android:layout_toRightOf="@id/save"
+        android:layout_below="@id/timeLabel"
+        android:layout_toRightOf="@id/delete"
         android:layout_marginTop="115dp"
         android:onClick="back"
         android:text="BACK"

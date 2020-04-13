@@ -25,8 +25,14 @@ public class EventPage extends AppCompatActivity {
         db = new DatabaseManager(this);
     }
 
+    public void delete(View view)
+    {
+        //for deleting individual functions from the event page using the delete button
+    }
+
     public class TextChangeHandler implements TextWatcher
     {
+        //to be used in the edit/add page to change the information
         //build textlistener
         public String name, date, time;
         public View view;
@@ -65,13 +71,9 @@ public class EventPage extends AppCompatActivity {
 
     public void back(View view)
     {
-        // Not necessary if there is already an onclick attached to the button
-
-//        if (view.getId() == findViewById(R.id.back).getId())
-//        {
-            Intent page = new Intent(this, MainActivity.class);
-            startActivity(page);
-//        }
+        //to get back to home page
+        Intent page = new Intent(this, MainActivity.class);
+        startActivity(page);
     }
 
     public void save(View view)
