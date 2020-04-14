@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,47 +24,9 @@ public class EventPage extends AppCompatActivity {
 
     public void delete(View view)
     {
-        //for deleting individual functions from the event page using the delete button
+        db.deleteAll();
     }
 
-    public class TextChangeHandler implements TextWatcher
-    {
-        //to be used in the edit/add page to change the information
-        //build textlistener
-        public String name, date, time;
-        public View view;
-
-        public void TextChangedHandler(View v)
-        {
-            view=v;
-        }
-
-        //these two classes are here because they have to be
-        public void beforeTextChanged(CharSequence c, int i, int j, int k){}
-        public void onTextChanged(CharSequence c, int i, int j, int k){}
-
-        //what we're really interested in; the stuff handler
-        public void afterTextChanged(Editable e)
-        {
-            if (view==findViewById(R.id.eventName))
-                name = e.toString();
-            else if (view==findViewById(R.id.eventDate))
-                date = e.toString();
-            else if (view==findViewById(R.id.eventTime))
-                time = e.toString();
-
-            Event temp = new Event(name, date, time);
-            if(!events.contains(temp))
-                events.add(temp);
-            else
-            {
-                Event temp2 = events.get(events.indexOf(temp));
-                temp2.eventName = name;
-                temp2.eventDate = date;
-                temp2.eventTime = time;
-            }
-        }
-    }
 
     public void back(View view)
     {

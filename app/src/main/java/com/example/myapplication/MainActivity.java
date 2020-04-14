@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.LinkedList;
 
 import static com.example.myapplication.Interface.events;
@@ -32,9 +37,22 @@ public class MainActivity extends AppCompatActivity
         TableLayout upcomingEvents =(TableLayout)findViewById(R.id.events);
         showAllEvents(upcomingEvents);
         context=this;
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = new Date();
+        String currentDate = dateFormat.format(date);
+        LinkedList<Manager> events = db.all();
+        LinkedList<Manager> currentEvents = new LinkedList<>();
+        for(int i = 0; i < events.size(); i++){
+            if(events.get(i).getDate().equals(date)){
+                currentEvents.addLast(events.get(i));
+            }
+        }
+        if(currentEvents.size() > 0){
+            alert();
+        }
     }
 
-    public void alert(Event event)
+    public void alert()
     {
         //alert box needs to be called with the event that's triggering it passed in order to display properly
         //alert box
@@ -42,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
         //vv uncomment and add the variable for the event name and event time to say when the event occurs.
-        alert.setMessage(event.eventName + " in "+event.eventTime);
+//        alert.setMessage(event.eventName + " in "+event.eventTime);
         alert.setPositiveButton("Clear all past events", listener); //returns a number
         alert.setNeutralButton("Close", listener); //returns a number
         //^^process the numbers returned to figure out what to do in the onClickListener.java file
