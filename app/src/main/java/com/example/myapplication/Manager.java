@@ -21,9 +21,8 @@ public class Manager {
         return date;
     }
 
-    public String getTime(){
-        return time;
-    }
+    public String getTime(){ return time; }
+
 
 
     @NonNull

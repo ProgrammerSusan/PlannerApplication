@@ -32,13 +32,23 @@
         android:id="@+id/timeLabel"
         android:layout_below="@id/nameLabel"
         android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/eventTime"
+        android:id="@+id/eventTimeH"
         android:layout_toRightOf="@id/timeLabel"
         android:layout_below="@id/eventName"
+        android:layout_marginTop="20dp"
         android:textSize="18dp"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventTimeM"
+        android:layout_toRightOf="@id/eventTimeH"
+        android:layout_below="@id/eventName"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"/>
+
 
 
     <TextView
@@ -50,12 +60,29 @@
         android:id="@+id/dateLabel"
         android:layout_below="@id/timeLabel"
         android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/eventDate"
-        android:layout_toRightOf="@id/timeLabel"
-        android:layout_below="@id/eventTime"
+        android:id="@+id/eventMonth"
+        android:layout_toRightOf="@id/dateLabel"
+        android:layout_below="@id/eventTimeH"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventDay"
+        android:layout_toRightOf="@id/eventMonth"
+        android:layout_below="@id/eventTimeH"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventYear"
+        android:layout_toRightOf="@id/eventDay"
+        android:layout_below="@id/eventTimeM"
+        android:layout_marginTop="20dp"
         android:textSize="18dp"/>
 
     <Button
@@ -76,7 +103,7 @@
         android:layout_toRightOf="@id/save"
         android:layout_marginTop="115dp"
         android:onClick="delete"
-        android:text="DELETE"
+        android:text="DELETE ALL EVENTS"
         android:textSize="20dp" />
 
     <Button

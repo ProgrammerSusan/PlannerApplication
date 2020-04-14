@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
         //vv uncomment and add the variable for the event name and event time to say when the event occurs.
-//        alert.setMessage(event.eventName + " in "+event.eventTime);
+        //alert.setMessage(event.eventName + " in "+event.eventTimeH+":"+event.eventTimeM);
         alert.setPositiveButton("Clear all past events", listener); //returns a number
         alert.setNeutralButton("Close", listener); //returns a number
         //^^process the numbers returned to figure out what to do in the onClickListener.java file
@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity
             TableRow tr1 = new TableRow(this);
             tr1.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
             TextView event = new TextView(this);
-            event.setText(events.get(i).getEvent()+" ");
+            event.setText(events.get(i).getEvent()+"   ");
             TextView date = new TextView(this);
-            date.setText(events.get(i).getDate()+" ");
+            date.setText(events.get(i).getDate()+"   ");
             TextView time = new TextView(this);
-            time.setText(events.get(i).getTime()+" ");
+            time.setText(events.get(i).getTime()+"   ");
             event.setTextSize(10*dp);
             date.setTextSize(10*dp);
             time.setTextSize(10*dp);
