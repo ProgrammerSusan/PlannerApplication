@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity
     {
         //alert box needs to be called with the event that's triggering it passed in order to display properly
         //alert box
-        onClickListener listener = new onClickListener();
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
         for(int i = 0; i < events.size(); i++){
