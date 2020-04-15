@@ -53,7 +53,7 @@ public class EventPage extends AppCompatActivity {
 
     public void delete(View view)
     {
-//        db.deleteAll();
+        db.deleteAll();
     }
 
 

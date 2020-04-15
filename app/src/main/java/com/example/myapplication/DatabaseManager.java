@@ -42,9 +42,9 @@ public class DatabaseManager extends SQLiteOpenHelper
         db.close();
     }
 
-    public void delete(String event){
+    public void deleteAll(){
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, "EVENT = ?", new String[]{event});
+        db.delete(TABLE_NAME, null, null);
         db.close();
     }
 
