@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     private DatabaseManager db;
     Context context;
     int color = Event.color;
+    private String currentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,31 +41,43 @@ public class MainActivity extends AppCompatActivity
         context=this;
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = new Date();
-        String currentDate = dateFormat.format(date);
+        currentDate = dateFormat.format(date);
         LinkedList<Manager> events = db.all();
         LinkedList<Manager> currentEvents = new LinkedList<>();
         for(int i = 0; i < events.size(); i++){
-            if(events.get(i).getDate().equals(date)){
+            if(events.get(i).getDate().equals(currentDate)){
                 currentEvents.addLast(events.get(i));
             }
         }
         if(currentEvents.size() > 0){
-            alert();
+            alert(currentEvents);
         }
     }
 
-    public void alert()
+    public void alert(LinkedList<Manager> events)
     {
         //alert box needs to be called with the event that's triggering it passed in order to display properly
         //alert box
         onClickListener listener = new onClickListener();
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
-        //vv uncomment and add the variable for the event name and event time to say when the event occurs.
-        //alert.setMessage(event.eventName + " in "+event.eventTimeH+":"+event.eventTimeM);
-        alert.setPositiveButton("Clear all past events", listener); //returns a number
-        alert.setNeutralButton("Close", listener); //returns a number
-        //^^process the numbers returned to figure out what to do in the onClickListener.java file
+        for(int i = 0; i < events.size(); i++){
+            alert.setMessage(events.get(i).getEvent());
+        }
+
+        alert.setPositiveButton("Clear all past events",  new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                db.deleteAllPast(currentDate);
+            }
+        });
+
+        alert.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
 
         AlertDialog alertbox = alert.create();
         alertbox.setIcon(android.R.drawable.ic_dialog_alert);
@@ -74,7 +88,6 @@ public class MainActivity extends AppCompatActivity
         alertbox.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color);
 
     }
-
 
     public void showAllEvents(TableLayout plans){
         int dp = (int)(getResources().getDisplayMetrics().density);
@@ -124,4 +137,5 @@ public class MainActivity extends AppCompatActivity
         }
     }
 }
+
 

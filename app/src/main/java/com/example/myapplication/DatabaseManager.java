@@ -13,7 +13,6 @@ public class DatabaseManager extends SQLiteOpenHelper
     private static final String DATABASE_NAME = "EVENTS_DB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "EVENTS_DB";
-    private LinkedList<Integer> list;
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -49,20 +48,9 @@ public class DatabaseManager extends SQLiteOpenHelper
         db.close();
     }
 
-    public void deleteAll(){
+    public void deleteAllPast(String date){
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, null, null);
-        db.close();
-    }
-
-    public void update(String event, String date, String time){
-        SQLiteDatabase db = getWritableDatabase();
-
-        ContentValues row = new ContentValues();
-        row.put("EVENT", event);
-        row.put("DATE", date);
-        row.put("TIME", time);
-        db.update(TABLE_NAME, row, "EVENT = ?", new String[]{event});
+        db.delete(TABLE_NAME, "DATE = ?", new String[]{date});
         db.close();
     }
 
