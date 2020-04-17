@@ -14,23 +14,30 @@ public class Options extends AppCompatActivity
 {
     public RadioButton red, orange, yellow, green, blue, indego, violet;
     public RadioButton halfHour, hour;
+    private OptionsDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+        db = new OptionsDatabase(this);
     }
 
     public void timeOnClick(View view)
     {
         //to get the amount of time the user wants to be notified before an event
-        halfHour = (RadioButton) view;
-        hour = (RadioButton) view;
+        halfHour = (RadioButton)findViewById(R.id.halfHourBefore);
+        hour = (RadioButton)findViewById(R.id.hourBefore);
 
-        if(halfHour.isChecked())
+        if(halfHour.isChecked()){
             Event.alertTime = .5;
-        else
+            db.update("30");
+        }
+
+        else{
             Event.alertTime = 1;
+            db.update("00");
+        }
     }
 
     public void colorOnClick(View view)

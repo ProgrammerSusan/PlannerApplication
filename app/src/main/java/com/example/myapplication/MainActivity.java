@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     Context context;
     int color = Event.color;
     private String currentDate;
+    private OptionsDatabase options;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,8 +44,11 @@ public class MainActivity extends AppCompatActivity
         showAllEvents(upcomingEvents);
         context=this;
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat minute = new SimpleDateFormat("mm");
+        options = new OptionsDatabase(this);
         Date date = new Date();
         currentDate = dateFormat.format(date);
+        String min = (String)minute.format(date);
         LinkedList<Manager> events = db.all();
         LinkedList<Manager> currentEvents = new LinkedList<>();
         for(int i = 0; i < events.size(); i++){
@@ -49,43 +56,10 @@ public class MainActivity extends AppCompatActivity
                 currentEvents.addLast(events.get(i));
             }
         }
-        if(currentEvents.size() > 0){
-            alert(currentEvents);
+
+        if(currentEvents.size() > 0 && min.equals(options.getTime())){
+            showAllEvents((TableLayout)findViewById(R.id.events));
         }
-    }
-
-    public void alert(LinkedList<Manager> events)
-    {
-        //alert box needs to be called with the event that's triggering it passed in order to display properly
-        //alert box
-        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-
-        for(int i = 0; i < events.size(); i++){
-            alert.setMessage(events.get(i).getEvent());
-        }
-
-        alert.setPositiveButton("Clear all past events",  new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                db.deleteAllPast(currentDate);
-            }
-        });
-
-        alert.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        AlertDialog alertbox = alert.create();
-        alertbox.setIcon(android.R.drawable.ic_dialog_alert);
-        alertbox.setCancelable(true);
-
-        alertbox.show();
-        alertbox.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
-        alertbox.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color);
-
     }
 
     public void showAllEvents(TableLayout plans){
@@ -137,5 +111,3 @@ public class MainActivity extends AppCompatActivity
     }
 
 }
-
-
