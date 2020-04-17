@@ -56,10 +56,43 @@ public class MainActivity extends AppCompatActivity
                 currentEvents.addLast(events.get(i));
             }
         }
-
         if(currentEvents.size() > 0 && min.equals(options.getTime())){
-            showAllEvents((TableLayout)findViewById(R.id.events));
+            alert(currentEvents);
         }
+    }
+
+    public void alert(LinkedList<Manager> events)
+    {
+        //alert box needs to be called with the event that's triggering it passed in order to display properly
+        //alert box
+        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+
+        for(int i = 0; i < events.size(); i++){
+            alert.setMessage(events.get(i).getEvent());
+        }
+
+        alert.setPositiveButton("Clear today's events",  new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                db.deleteAllPast(currentDate);
+            }
+        });
+
+        alert.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertbox = alert.create();
+        alertbox.setIcon(android.R.drawable.ic_dialog_alert);
+        alertbox.setCancelable(true);
+
+        alertbox.show();
+        alertbox.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
+        alertbox.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color);
+
     }
 
     public void showAllEvents(TableLayout plans){
@@ -109,5 +142,4 @@ public class MainActivity extends AppCompatActivity
             startActivity(page);
         }
     }
-
 }
