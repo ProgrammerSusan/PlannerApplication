@@ -54,28 +54,6 @@ public class DatabaseManager extends SQLiteOpenHelper
         db.close();
     }
 
-    public LinkedList<Manager> select(String site){
-        SQLiteDatabase db = getWritableDatabase();
-
-        LinkedList<Manager> list = new LinkedList<Manager>();
-
-        Cursor cursor = db.query(TABLE_NAME, new String[]{"WEBSITE", "PASSWORD"},
-                "WEBSITE = ?", new String[]{site},
-                null, null, null);
-
-        while(cursor.moveToNext()){
-            String event = cursor.getString(0);
-            String date = cursor.getString(1);
-            String time = cursor.getString(2);
-            Manager m = new Manager(event, date, time);
-            list.addLast(m);
-        }
-        cursor.close();
-        db.close();
-
-        return list;
-    }
-
     public LinkedList<Manager> all(){
         SQLiteDatabase db = getWritableDatabase();
         LinkedList<Manager> list = new LinkedList<Manager>();

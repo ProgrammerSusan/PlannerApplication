@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +73,7 @@ public class EventPage extends AppCompatActivity {
         Spinner month = findViewById(R.id.eventMonth);
         Spinner day = findViewById(R.id.eventDay);
         Spinner year = findViewById(R.id.eventYear);
+        TextView n = (TextView)findViewById(R.id.eventName);
 
         try{
             String name = event.getText().toString();
@@ -88,6 +90,8 @@ public class EventPage extends AppCompatActivity {
             }
             Manager m = new Manager(name, date, time);
             db.insert(m);
+
+            n.setText("");
         }
         catch (Exception e){
             Toast.makeText(this, "Problem with input", Toast.LENGTH_SHORT).show();

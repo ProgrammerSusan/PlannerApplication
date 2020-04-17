@@ -2,9 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,12 +14,8 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
-
-import static com.example.myapplication.Interface.events;
 
 
 public class MainActivity extends AppCompatActivity
@@ -56,13 +50,18 @@ public class MainActivity extends AppCompatActivity
                 currentEvents.addLast(events.get(i));
             }
         }
-        if(currentEvents.size() > 0 && options.getTime().equals("30") && (min.equals("30") || min.equals("00"))){
-            alert(currentEvents);
-        }
-        if(currentEvents.size() > 0 && options.getTime().equals("00") && min.equals("00")){
+//        if(currentEvents.size() > 0 && options.getTime().equals("30") && (min.equals("30") || min.equals("0"))){
+//            alert(currentEvents);
+//        }
+//        if(currentEvents.size() > 0 && options.getTime().equals("00") && min.equals("0")){
+//            alert(currentEvents);
+//        }
+
+        if(currentEvents.size() > 0){
             alert(currentEvents);
         }
     }
+
 
     public void alert(LinkedList<Manager> events)
     {
@@ -70,10 +69,11 @@ public class MainActivity extends AppCompatActivity
         //alert box
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
+        String message = "";
         for(int i = 0; i < events.size(); i++){
-            alert.setMessage(events.get(i).getEvent());
+            message += events.get(i).getEvent() + "\n";
         }
-
+        alert.setMessage(message);
         alert.setPositiveButton("Clear today's events",  new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
