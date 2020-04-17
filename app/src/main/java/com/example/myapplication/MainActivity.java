@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
                 currentEvents.addLast(events.get(i));
             }
         }
-        if(currentEvents.size() > 0 && options.getTime().equals("00") && (min.equals("30") || min.equals("00"))){
+        if(currentEvents.size() > 0 && options.getTime().equals("30") && (min.equals("30") || min.equals("00"))){
             alert(currentEvents);
         }
         if(currentEvents.size() > 0 && options.getTime().equals("00") && min.equals("00")){
